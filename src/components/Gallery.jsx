@@ -63,14 +63,19 @@ const Tag = styled.li`
   font-size: 0.8em;
 `;
 
-
 const SearchContainer = styled.div`
-display: flex;
-justify-content: space-around;
-align-items: center;
-gap: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  margin-top: 1rem;
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  font-weight: bold;
+  margin-top: 1rem;
+`;
 
 const Image = ({ image, index, moveImage }) => {
   const [, ref] = useDrag({
@@ -120,6 +125,7 @@ const Gallery = () => {
   const [imageOrder, setImageOrder] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
 
   const handleNavigateToHome = () => {
     navigate("/");
@@ -156,33 +162,39 @@ const Gallery = () => {
   };
 
   const filteredImages = imageOrder.filter((image) =>
-    image.tags.some((tag) => tag.includes(search.toLowerCase()))
+    image.tags.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
     <>
       <div>
-      <SearchContainer>
+        <SearchContainer>
           <input
             type="text"
             placeholder="Search by tags"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ flex: 1, maxWidth: "50%", padding: "8px", borderRadius: "20px", outline: "none" }}
+            style={{
+              flex: 1,
+              maxWidth: "50%",
+              padding: "8px",
+              borderRadius: "20px",
+              outline: "none",
+            }}
           />
-        <button
-          style={{
-            padding: "0.5rem 1rem",
-            backgroundColor: "#ff5722",
-            color: "#fff",
-            cursor: "pointer",
-            fontSize: "1rem",
-            border: "none",
-          }}
-          onClick={handleNavigateToHome}
-        >
-          Go Back to Home
-        </button>
+          <button
+            style={{
+              padding: "0.5rem 1rem",
+              backgroundColor: "#ff5722",
+              color: "#fff",
+              cursor: "pointer",
+              fontSize: "1rem",
+              border: "none",
+            }}
+            onClick={handleNavigateToHome}
+          >
+            Go Back to Home
+          </button>
         </SearchContainer>
       </div>
       <DndProvider backend={HTML5Backend}>
@@ -191,14 +203,18 @@ const Gallery = () => {
         ) : (
           <div>
             <GalleryContainer>
-              {filteredImages.map((image, index) => (
+            {filteredImages.length === 0 ? (
+                <ErrorMessage>No images found for the given tag.</ErrorMessage>
+              ) : (
+              filteredImages.map((image, index) => (
                 <Image
                   key={image.id}
                   index={index}
                   image={image}
                   moveImage={moveImage}
                 />
-              ))}
+              ))
+              )}
             </GalleryContainer>
           </div>
         )}

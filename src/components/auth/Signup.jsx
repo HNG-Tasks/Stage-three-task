@@ -46,6 +46,16 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
+const LinkContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const LinkText = styled.h2`
+   margin-right: 0.5rem;
+  font-weight: bold;
+`;
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,18 +72,22 @@ const Signup = () => {
   };
 
   const linkStyle = {
-    backgroundColor: "#ff5722",
-    color: "#fff",
-    border: "none",
-    padding: "0.7rem 1.5rem",
+    fontWeight: "bold",
+    color: "#ff5722",
     marginTop: "1rem",
     textDecoration: "none",
     cursor: "pointer",
     fontSize: "1rem",
-    borderRadius: "5px",
+    marginBottom: "0.5rem"
   };
   return (
     <SignupContainer>
+       <LinkContainer>
+        <LinkText>Already have an account?</LinkText>
+        <Link to="/login" style={linkStyle}>
+          Log in
+        </Link>
+      </LinkContainer>
       <SignupForm onSubmit={handleRegistration}>
         <InputField
           type="email"
@@ -89,10 +103,6 @@ const Signup = () => {
         />
         <SubmitButton type="submit">Register</SubmitButton>
       </SignupForm>
-
-      <Link to="/login" style={linkStyle}>
-        Log in
-      </Link>
     </SignupContainer>
   );
 };

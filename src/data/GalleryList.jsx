@@ -79,15 +79,33 @@ const imageData = [
     },
     {
         id: 14,
+        title: 'Peach',
+        img: '/src/assets/peach.jpg',
+        tags: ['Peach', 'Flora', 'Dahila']
+    },
+    {
+        id: 15,
         title: 'Purple',
         img: '/src/assets/purple.jpg',
         tags: ['Hd Purple Wallpaper', 'Guatemala', 'SunSet Images']
     },
     {
-        id: 15,
+        id: 16,
+        title: 'Parrot',
+        img: '/src/assets/parrot.jpg',
+        tags: ['Parrot', 'Birds', 'Animal Images & Pictures']
+    },
+    {
+        id: 17,
         title: 'Waterfall',
         img: '/src/assets/waterfall.jpg',
         tags: ['Peaceful Nature', 'Fall', 'Waterfall Landscape']
+    },
+    {
+        id: 18,
+        title: 'Night',
+        img: '/src/assets/night.jpg',
+        tags: ['Nature Images', 'Night', 'Sky Wallpaper']
     }
 
 ];

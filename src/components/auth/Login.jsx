@@ -53,7 +53,6 @@ const LoginButton = styled.button`
   cursor: pointer;
 `;
 
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -93,15 +92,25 @@ const Login = () => {
   return (
     <LoginPageContainer>
       <LoginForm onSubmit={handleLogin}>
-        <h2>Login</h2>
+        <h2>Welcome back &#128578;!</h2>
         <InputField
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {emailError && <ErrorMessage style={{color: '#ff5722', fontSize: '0.9re', marginTop: '0.5rem',
-  fontWeight: 'bold'}}>{emailError}</ErrorMessage>}
+        {emailError && (
+          <ErrorMessage
+            style={{
+              color: "#ff5722",
+              fontSize: "0.9re",
+              marginTop: "0.5rem",
+              fontWeight: "bold",
+            }}
+          >
+            {emailError}
+          </ErrorMessage>
+        )}
 
         <InputField
           type="password"
