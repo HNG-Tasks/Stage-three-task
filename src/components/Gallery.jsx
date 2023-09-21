@@ -64,16 +64,35 @@ const Tag = styled.li`
 
 const SearchContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  margin-top: 1rem;
+  background-color: #fff;
+  margin: 1rem 2rem 0rem 2rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  gap: 10px;
+
+  @media (max-width: 420px) {
+    align-items: stretch;
+    text-align: center;
+    padding: 10px;
+
+    botton {
+      text-align: center;
+     }
 `;
 
 const ErrorMessage = styled.p`
   color: red;
   font-weight: bold;
   margin-top: 1rem;
+`;
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 const Image = ({ image, index, moveImage }) => {
@@ -137,18 +156,20 @@ const Gallery = () => {
 
   const Spinner = () => {
     return (
-      <TailSpin
-        paddingRight="40"
-        height="160"
-        width="400"
-        color="#ff5722"
-        ariaLabel="tail-spin-loading"
-        radius="1"
-        alignItems="center"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-      />
+      <SpinnerContainer>
+        <TailSpin
+          paddingRight="40"
+          height="160"
+          width="400"
+          color="#ff5722"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          alignItems="center"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </SpinnerContainer>
     );
   };
 
@@ -174,7 +195,6 @@ const Gallery = () => {
             onChange={(e) => setSearch(e.target.value)}
             style={{
               flex: 1,
-              maxWidth: "50%",
               padding: "8px",
               borderRadius: "20px",
               outline: "none",
@@ -201,17 +221,17 @@ const Gallery = () => {
         ) : (
           <div>
             <GalleryContainer>
-            {filteredImages.length === 0 ? (
+              {filteredImages.length === 0 ? (
                 <ErrorMessage>No images found for the given tag.</ErrorMessage>
               ) : (
-              filteredImages.map((image, index) => (
-                <Image
-                  key={image.id}
-                  index={index}
-                  image={image}
-                  moveImage={moveImage}
-                />
-              ))
+                filteredImages.map((image, index) => (
+                  <Image
+                    key={image.id}
+                    index={index}
+                    image={image}
+                    moveImage={moveImage}
+                  />
+                ))
               )}
             </GalleryContainer>
           </div>
