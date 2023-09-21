@@ -67,10 +67,11 @@ const SearchContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  margin: 1rem 2rem 0rem 2rem;
+  margin: 2rem auto;
   padding: 8px 16px;
   border-radius: 20px;
   gap: 10px;
+  max-width: 75rem;
 
   @media (max-width: 420px) {
     align-items: stretch;
