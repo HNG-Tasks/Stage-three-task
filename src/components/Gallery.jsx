@@ -3,9 +3,11 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import styled from "styled-components";
 import { TailSpin } from "react-loader-spinner";
-
+// import { TouchBackend } from "react-dnd-touch-backend";
 import imageData from "../data/GalleryList";
 import { useNavigate } from "react-router-dom";
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 
 const GalleryContainer = styled.div`
   max-width: 75rem;
@@ -78,12 +80,12 @@ const ErrorMessage = styled.p`
 `;
 
 const Image = ({ image, index, moveImage }) => {
-  const [, ref] = useDrag({
+  const [, refDrag] = useDrag({
     type: "image",
     item: { index },
   });
 
-  const [, drop] = useDrop({
+  const [, refDrop] = useDrop({
     accept: "image",
     hover: (draggedItem) => {
       if (draggedItem.index !== index) {
@@ -94,7 +96,7 @@ const Image = ({ image, index, moveImage }) => {
   });
 
   return (
-    <ImageContainer ref={(node) => ref(drop(node))}>
+    <ImageContainer ref={(node) => refDrag(refDrop(node))}>
       <ImageWrapper>
         <img
           src={image.img}
@@ -161,6 +163,13 @@ const Gallery = () => {
     setImageOrder(updatedOrder);
   };
 
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+    moveImage(result.source.index, result.destination.index);
+  };
+
   const filteredImages = imageOrder.filter((image) =>
     image.tags.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
   );
@@ -193,11 +202,11 @@ const Gallery = () => {
             }}
             onClick={handleNavigateToHome}
           >
-            Go Back to Home
+            Log out
           </button>
         </SearchContainer>
       </div>
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={ HTML5Backend}>
         {loading ? (
           <Spinner />
         ) : (
