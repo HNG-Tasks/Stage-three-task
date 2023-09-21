@@ -12,7 +12,7 @@ const FooterContainer = styled.footer`
   color: white;
   padding: 10px;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 `;
 
 const SocialIcons = styled.div`
@@ -53,7 +53,7 @@ const FooterList = styled.ul`
 
 const CopyrightText = styled.p`
   font-size: 14px;
-  margin-top: 10px;
+  margin: 10px 0;
 `;
 
 const Footer = () => {
