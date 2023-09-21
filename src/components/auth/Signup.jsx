@@ -118,7 +118,7 @@ const Signup = () => {
         console.log("Registration error:", error);
         if (error.code === "auth/wrong-password") {
           setPasswordError("Incorrect password");
-        } else if (error.code === "auth/invalid email") {
+        } else if (error.code === "auth/Email already in use") {
           setEmailError("Invalid Email format");
         } else {
           setEmailError("Authentication failed. Fill in your information");
