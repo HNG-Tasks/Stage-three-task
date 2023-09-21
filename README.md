@@ -21,8 +21,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository:** Start by cloning the repository to your local machine using Git:
 
-    ```bash
-git clone https://github.com/HNG-Tasks/Stage-three-task.git
+        ```bash
+    git clone https://github.com/HNG-Tasks/Stage-three-task.git
 
 2. **Navigate to the Project Directory:** Change your current directory to the project folder:
 
