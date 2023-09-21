@@ -71,7 +71,7 @@ const SearchContainer = styled.div`
   padding: 8px 16px;
   border-radius: 20px;
   gap: 10px;
-  max-width: 75rem;
+  max-width: 70rem;
 
   @media (max-width: 420px) {
     align-items: stretch;
@@ -195,7 +195,7 @@ const Gallery = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{
-              flex: 1,
+              width: "60%",
               padding: "8px",
               borderRadius: "20px",
               outline: "none",
