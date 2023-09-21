@@ -12,7 +12,7 @@ const FooterContainer = styled.footer`
   color: white;
   padding: 10px;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 
 const SocialIcons = styled.div`
