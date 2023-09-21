@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d309ca86-e414-45b0-815b-3e6ca4dbe17e/deploy-status)](https://app.netlify.com/sites/hng-gallery-app-task/deploys)
+
 # Gallery App
 **Table of Contents**
 - [Overview](#overview)
