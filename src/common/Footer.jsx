@@ -53,7 +53,7 @@ const FooterList = styled.ul`
 
 const CopyrightText = styled.p`
   font-size: 14px;
-  margin: 10px 0;
+  margin-top: 10px;
 `;
 
 const Footer = () => {
