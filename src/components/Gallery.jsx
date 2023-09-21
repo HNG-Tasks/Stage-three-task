@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import styled from "styled-components";
 import { TailSpin } from "react-loader-spinner";
-// import { TouchBackend } from "react-dnd-touch-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
 import imageData from "../data/GalleryList";
 import { useNavigate } from "react-router-dom";
-// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
 
 const GalleryContainer = styled.div`
   max-width: 75rem;
@@ -127,7 +124,6 @@ const Gallery = () => {
   const [imageOrder, setImageOrder] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
 
   const handleNavigateToHome = () => {
     navigate("/");
@@ -161,13 +157,6 @@ const Gallery = () => {
     const [movedImage] = updatedOrder.splice(from, 1);
     updatedOrder.splice(to, 0, movedImage);
     setImageOrder(updatedOrder);
-  };
-
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-    moveImage(result.source.index, result.destination.index);
   };
 
   const filteredImages = imageOrder.filter((image) =>
@@ -206,7 +195,7 @@ const Gallery = () => {
           </button>
         </SearchContainer>
       </div>
-      <DndProvider backend={ HTML5Backend}>
+      <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
         {loading ? (
           <Spinner />
         ) : (
